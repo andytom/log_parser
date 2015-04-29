@@ -1,0 +1,53 @@
+# Log Parser
+
+## Overview
+
+Process an Apache logfile in format ```%a %l %u %t "%r" %>s %b %D``` and calculate
+the:
+* No. of successful requests per minute
+* No. of error requests per minute
+* Mean response time per minute
+* MBs sent per minute.
+
+It can also write the data broken down by minute to a csv for further processing.
+
+## Setup
+
+The following assumes that you have python v2.7, pip and virtaulenv
+installed on your machine.
+* python is normally installed on Linux and OSX by default
+* [pip installation instructions](https://pip.pypa.io/en/latest/installing.html)
+* [virtaulenv installation instructions](https://virtualenv.pypa.io/en/latest/installation.html)
+
+**Installation**
+* Create a virtualenv, replace ENV with whatever you want (eg log_parser)
+~~~
+virtaulenv ENV
+source ENV/bin/acivate
+~~~
+* Install requirements
+~~~
+pip install -r requirements.txt
+~~~
+
+## Usage
+
+You can parse a log file using the following command.
+Replace LOG_FILE with the path to the log file.
+~~~
+python log_parser.py LOG_FILE
+python log_parser.py ./resources/web-access.subset.log
+~~~
+
+There is also a built in help
+~~~
+python log_parser.py -h
+~~~
+
+## Examples
+
+There are two subsets of the inital data that was provided they are:
+* ```resources/web-access.tiny.log``` This is the first 10 lines taken from the
+  set of sample data provided.
+* ```resources/web-access.subset.log``` This is a 20,000 subset of the sample
+  data that was provided.
